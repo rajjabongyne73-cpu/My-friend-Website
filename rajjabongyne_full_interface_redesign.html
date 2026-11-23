@@ -1,0 +1,961 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rajja Bongyne | Personal Portfolio</title>
+
+<style>
+/* ================= GENERAL SETTINGS ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #10130f;
+    --surface: #191e18;
+    --surface-light: #222920;
+    --accent: #b6c99a;
+    --white: #f4f4ed;
+    --muted: #a5ad9e;
+    --border: rgba(255,255,255,0.09);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* ================= NAVIGATION ================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(16,19,15,0.96);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(15px);
+}
+
+nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    display: block;
+    padding: 9px 13px;
+    color: var(--muted);
+    font-size: 13px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--bg);
+    background: var(--accent);
+}
+
+/* ================= PAGE SYSTEM ================= */
+
+.page {
+    display: none;
+    min-height: 78vh;
+    padding: 75px 25px;
+    animation: appear 0.4s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+#home.page.active {
+    display: flex;
+    align-items: center;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ================= HOME PAGE ================= */
+
+#home {
+    background:
+        radial-gradient(circle at 85% 30%,
+        rgba(182,201,154,0.10), transparent 35%),
+        var(--bg);
+    min-height: 85vh;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    align-items: center;
+    gap: 70px;
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.tag {
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 6vw, 68px);
+    font-weight: normal;
+    line-height: 1.15;
+    margin: 22px 0;
+}
+
+.hero h1 span {
+    color: var(--accent);
+    font-style: italic;
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 540px;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+.primary-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #151a13;
+    padding: 13px 23px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.primary-btn:hover {
+    background: var(--white);
+    transform: translateY(-3px);
+}
+
+.profile {
+    width: 100%;
+    max-width: 340px;
+    height: 410px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 160px 160px 8px 8px;
+    border: 1px solid rgba(182,201,154,0.5);
+    background: var(--surface);
+    box-shadow: 15px 15px 0 rgba(182,201,154,0.09);
+}
+
+.profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ================= SECTION HEADINGS ================= */
+
+.section-heading {
+    margin-bottom: 38px;
+}
+
+.section-heading .tag {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.section-heading h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(35px, 5vw, 48px);
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ================= BACKGROUND ================= */
+
+.about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.panel h3 {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.panel p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 13px;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+}
+
+.detail span:first-child {
+    color: var(--muted);
+}
+
+.detail span:last-child {
+    color: var(--accent);
+    text-align: right;
+}
+
+/* ================= HOBBIES & SKILLS ================= */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.info-card {
+    background: var(--surface);
+    padding: 30px 25px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    background: var(--surface-light);
+}
+
+.card-number {
+    color: var(--accent);
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.info-card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.info-card p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ================= EDUCATION ================= */
+
+.education-item {
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+    padding: 30px;
+    border-radius: 5px;
+    max-width: 800px;
+}
+
+.education-item .year {
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.education-item h3 {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.education-item p {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 7px 0;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 240px;
+    display: block;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+}
+
+.gallery-item p {
+    padding: 17px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.contact-box {
+    background: var(--surface);
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.contact-box h3 {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.contact-box p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.contact-line {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.contact-line strong {
+    color: var(--accent);
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 25px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+footer span {
+    color: var(--accent);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width: 800px) {
+
+    nav {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .profile {
+        max-width: 250px;
+        height: 310px;
+    }
+
+    .card-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about-layout,
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 500px) {
+
+    .nav-links {
+        gap: 2px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+        padding: 8px;
+    }
+
+    .card-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page {
+        padding: 50px 18px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+<nav>
+    <a href="#home" class="logo">RAJJA.</a>
+
+    <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#background">About</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+</header>
+
+<main>
+
+<!-- HOME PAGE -->
+<section class="page active" id="home">
+
+    <div class="hero">
+
+        <div>
+            <div class="tag">Personal Biodata</div>
+
+            <h1>
+                Hello, I'm<br>
+                <span>RAJJA BONGYNE.</span>
+            </h1>
+
+            <p>
+                Welcome to my personal portfolio.
+                I am a Diploma in Information Management student
+                at Universiti Teknologi MARA, Sarawak.
+                This website introduces my background,
+                education, interests and personal skills.
+            </p>
+
+            <a href="#background" class="primary-btn">
+                EXPLORE MY PROFILE →
+            </a>
+        </div>
+
+        <div class="profile">
+            <img src="profile.jpg.jpeg"
+                 alt="Rajja's profile photo"
+                 onerror="this.src='https://placehold.co/400x500/222920/b6c99a?text=Your+Photo'">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BACKGROUND PAGE -->
+<section class="page" id="background">
+
+<div class="container">
+
+    <div class="section-heading">
+        <span class="tag">01 / Introduction</span>
+        <h2>About Me</h2>
+        <p>Get to know more about my personal background.</p>
+    </div>
+
+    <div class="about-layout">
+
+        <div class="panel">
+            <h3>Who Am I?</h3>
+
+            <p>
+                Hello! My name is Rajja Bongyne anak Julin.
+                You can call me Rajja. I am currently pursuing
+                a Diploma in Information Management at
+                Universiti Teknologi MARA (UiTM), Sarawak.
+            </p>
+
+            <p>
+                I enjoy learning new things, exploring different
+                interests and developing my personal skills.
+                Through this website, I would like to share
+                my journey and introduce myself.
+            </p>
+
+            <p>
+                My personal motto is
+                "Keep learning, keep improving."
+            </p>
+        </div>
+
+        <div class="panel">
+            <h3>Personal Information</h3>
+
+            <div class="detail">
+                <span>Full Name</span>
+                <span>Rajja Bongyne Anak Julin</span>
+            </div>
+
+            <div class="detail">
+                <span>Hometown</span>
+                <span>Sg. Ruan, Roban</span>
+            </div>
+
+            <div class="detail">
+                <span>Programme</span>
+                <span>Diploma in Information Management</span>
+            </div>
+
+            <div class="detail">
+                <span>Institution</span>
+                <span>UiTM Sarawak, Campus Samarahan 1</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+
+<!-- HOBBIES PAGE -->
+<section class="page" id="hobbies">
+
+<div class="container">
+
+    <div class="section-heading">
+        <span class="tag">02 / Personal Interests</span>
+        <h2>My Hobbies</h2>
+        <p>Activities I enjoy during my free time.</p>
+    </div>
+
+    <div class="card-grid">
+
+        <article class="info-card">
+            <div class="card-number">01</div>
+            <h3>Listening to Music</h3>
+            <p>
+                I enjoy listening to different types of music.
+                It helps me relax and makes my free time
+                more enjoyable.
+            </p>
+        </article>
+
+        <article class="info-card">
+            <div class="card-number">02</div>
+            <h3>Fishing</h3>
+            <p>
+                Fishing is one of my favourite outdoor activities.
+                I enjoy spending time by the water and
+                experiencing nature.
+            </p>
+        </article>
+
+        <article class="info-card">
+            <div class="card-number">03</div>
+            <h3>Online Gaming</h3>
+            <p>
+                I enjoy playing online games for entertainment
+                and connecting with friends.
+            </p>
+        </article>
+
+    </div>
+</div>
+</section>
+
+
+<!-- EDUCATION PAGE -->
+<section class="page" id="education">
+
+<div class="container">
+
+    <div class="section-heading">
+        <span class="tag">03 / Academic Journey</span>
+        <h2>My Education</h2>
+        <p>My educational background and current studies.</p>
+    </div>
+
+    <div class="education-item">
+
+        <div class="year">Current Education</div>
+
+        <h3>Diploma in Information Management</h3>
+
+        <p><strong>Institution:</strong>
+        Universiti Teknologi MARA (UiTM)</p>
+
+        <p><strong>Campus:</strong>
+        UiTM Sarawak, Kampus Samarahan 1</p>
+
+        <p><strong>Study Period:</strong>
+        2.5 Years</p>
+
+        <p>
+            Throughout my studies, I am gaining knowledge
+            about information management, records management,
+            library services and information organisation.
+        </p>
+
+    </div>
+</div>
+</section>
+
+
+<!-- SKILLS PAGE -->
+<section class="page" id="skills">
+
+<div class="container">
+
+    <div class="section-heading">
+        <span class="tag">04 / Personal Development</span>
+        <h2>My Skills</h2>
+        <p>Knowledge and abilities I have developed through my studies.</p>
+    </div>
+
+    <div class="card-grid">
+
+        <article class="info-card">
+            <div class="card-number">01</div>
+            <h3>Computer Skills</h3>
+            <p>
+                Basic computer operation, document preparation
+                and everyday digital tasks.
+            </p>
+        </article>
+
+        <article class="info-card">
+            <div class="card-number">02</div>
+            <h3>HTML & CSS</h3>
+            <p>
+                Basic knowledge of creating and designing
+                websites using HTML and CSS.
+            </p>
+        </article>
+
+        <article class="info-card">
+            <div class="card-number">03</div>
+            <h3>Information Management</h3>
+            <p>
+                Understanding how to organise, manage
+                and maintain information effectively.
+            </p>
+        </article>
+
+    </div>
+</div>
+</section>
+
+
+<!-- GALLERY PAGE -->
+<section class="page" id="gallery">
+
+<div class="container">
+
+    <div class="section-heading">
+        <span class="tag">05 / Memories</span>
+        <h2>My Gallery</h2>
+        <p>A collection of photographs representing my interests.</p>
+    </div>
+
+    <div class="gallery-grid">
+
+        <div class="gallery-item">
+            <img src="fishing.jpg.jpeg"
+                 alt="Fishing"
+                 onerror="this.src='https://placehold.co/600x400/222920/b6c99a?text=Fishing'">
+            <p>Fishing Moments</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="brunomars2.jpg"
+                 alt="Music"
+                 onerror="this.src='https://placehold.co/600x400/222920/b6c99a?text=Music'">
+            <p>Music & Lifestyle</p>
+        </div>
+
+        <div class="gallery-item">
+            <img src="pool.jpg"
+                 alt="Gaming"
+                 onerror="this.src='https://placehold.co/600x400/222920/b6c99a?text=Gaming'">
+            <p>Gaming Moments</p>
+        </div>
+
+    </div>
+</div>
+</section>
+
+
+<!-- CONTACT PAGE -->
+<section class="page" id="contact">
+
+<div class="container">
+
+    <div class="section-heading">
+        <span class="tag">06 / Get In Touch</span>
+        <h2>Contact Me</h2>
+        <p>Feel free to connect with me.</p>
+    </div>
+
+    <div class="contact-layout">
+
+        <div class="contact-box">
+            <h3>Let's Connect.</h3>
+
+            <p>
+                Thank you for visiting my personal portfolio.
+                If you would like to get in touch,
+                you can contact me through the details provided.
+            </p>
+
+            <a href="mailto:yourname@example.com"
+               class="primary-btn">
+                SEND AN EMAIL →
+            </a>
+        </div>
+
+        <div class="contact-box">
+
+            <h3>Contact Information</h3>
+
+            <div class="contact-line">
+                <strong>Email:</strong>
+                rajjabongyne73@gmail.com
+            </div>
+
+            <div class="contact-line">
+                <strong>Phone:</strong>
+                0109651512
+            </div>
+
+            <div class="contact-line">
+                <strong>Location:</strong>
+                Sarawak, Malaysia
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 <span>Rajja Bongyne anak Julin.</span>
+    All Rights Reserved.</p>
+    <p>Designed & Developed with HTML and CSS.</p>
+</footer>
+
+
+<!-- PAGE NAVIGATION JAVASCRIPT -->
+<script>
+
+const navLinks = document.querySelectorAll(".nav-links a");
+const pages = document.querySelectorAll(".page");
+
+function showPage(pageId) {
+
+    const selectedPage = document.getElementById(pageId);
+
+    if (!selectedPage) return;
+
+    // Hide all pages
+    pages.forEach(page => {
+        page.classList.remove("active");
+    });
+
+    // Show selected page
+    selectedPage.classList.add("active");
+
+    // Update navigation
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + pageId) {
+            link.classList.add("active");
+        }
+
+    });
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+// Navigation click
+navLinks.forEach(link => {
+
+    link.addEventListener("click", function(event) {
+
+        event.preventDefault();
+
+        const pageId = this.getAttribute("href").substring(1);
+
+        history.pushState(null, "", "#" + pageId);
+
+        showPage(pageId);
+
+    });
+
+});
+
+// Other links that navigate between pages
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+    if (!link.closest(".nav-links")) {
+
+        link.addEventListener("click", function(event) {
+
+            const pageId = this.getAttribute("href").substring(1);
+
+            if (document.getElementById(pageId)) {
+
+                event.preventDefault();
+
+                history.pushState(null, "", "#" + pageId);
+
+                showPage(pageId);
+
+            }
+
+        });
+
+    }
+
+});
+
+// Browser back and forward buttons
+window.addEventListener("popstate", function() {
+
+    const pageId = location.hash.substring(1) || "home";
+
+    showPage(pageId);
+
+});
+
+// Open the correct page when website loads
+const initialPage = location.hash.substring(1) || "home";
+
+showPage(initialPage);
+
+</script>
+
+</body>
+</html>
